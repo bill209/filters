@@ -1,0 +1,80 @@
+<div id="csFilter"
+     ng-style="{ width: boxWidth }">
+    <div ng-repeat="filter in filterheaders">
+        <h2 id="heading"
+            ng-click="toggleFilters(filter.key); getSectionFilters(filter.key)">
+            {{filter.value}}
+            <i class="fa fa-chevron-down" aria-hidden="true" ng-show="!filters[filter.key].open"></i>
+            <i class="fa fa-chevron-up" aria-hidden="true" ng-show="filters[filter.key].open"></i>
+        </h2>
+        <div id="filtersBox" ng-class="{'close': !filters[filter.key].open}">
+            <ul class="filter">
+                <li ng-repeat="opt in filteroptions[filter.key]" ng-style="{ color: 'green' }">
+                    <label class="checkbox">
+                        <input type="checkbox"
+                               name="{{filter}}"
+                               ng-change="formChange()"
+                               ng-model="formData[filter][key]">
+                        {{opt.value}}
+                    </label>
+                </li>
+            </ul>
+            <p id="filtersFooter">
+                <button ng-click="sendfilters({ message:formData})" ng-show="filterbutton === 'true'">Filter</button>
+                <a href="" ng-click="clearFilters(filter)" ng-show="clearlink === 'true'">Clear</a>
+            </p>
+        </div>
+    </div>
+
+    <div ng-show="dev === 'true'" style="border: solid 1px #ddd; padding: 10px; min-height: 50px; height: auto; "
+         ng-style="{ width: boxWidth }">
+        filter headers: <br />
+        {{filterheaders | json}}
+    </div>
+    <div ng-show="dev === 'true'" style="border: solid 1px #ddd; padding: 10px; min-height: 50px; height: auto; "
+         ng-style="{ width: boxWidth }">
+        filter options: <br />
+        {{filteroptions | json}}
+    </div>
+
+
+
+    <h1>{{title}}</h1>
+    <div ng-repeat="(filter, val) in filterset">
+        <h2 id="heading"
+            ng-click="toggleFilters(filter);">
+            {{filter}}
+            <i class="fa fa-chevron-down" aria-hidden="true" ng-show="!filters[filter].open"></i>
+            <i class="fa fa-chevron-up" aria-hidden="true" ng-show="filters[filter].open"></i>
+        </h2>
+        <div id="filtersBox" ng-class="{'close': !filters[filter].open}">
+            <ul class="filter">
+                <li ng-repeat="key in val" ng-style="{ color: 'green' }"
+                    ng-hide="fc.accordion[filter].hideUnfiltered && !formData[filter][key]">
+                    <label class="checkbox">
+                        <input type="checkbox"
+                               name="{{filter}}"
+                               ng-change="formChange()"
+                               ng-model="formData[filter][key]">
+                        {{key}}
+                    </label>
+                </li>
+            </ul>
+            <p id="filtersFooter">
+                <button ng-click="sendfilters({ message:formData})" ng-show="filterbutton === 'true'">Filter</button>
+                <a href="" ng-click="clearFilters(filter)" ng-show="clearlink === 'true'">Clear</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div ng-show="dev === 'true'" style="border: solid 1px #ddd; padding: 10px; min-height: 50px; height: auto; "
+     ng-style="{ width: boxWidth }">
+    filter data: <br />
+    {{filters | json}}
+</div>
+<div ng-show="dev === 'true'" style="border: solid 1px #ddd; padding: 10px; min-height: 50px; height: auto; "
+     ng-style="{ width: boxWidth }">
+    form data: <br/>
+    {{formData | json }}
+</div>
+<!--filters[filter].open = !filters[filter].open-->

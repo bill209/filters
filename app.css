@@ -1,0 +1,73 @@
+
+
+ul
+{
+    list-style-type: none;
+}
+
+#csFilter {
+    font: 14px consolas, arial;
+    padding: 10;
+}
+
+#csFilter h1 {
+    font-size: 1.2em;
+    color: cornflowerblue;
+}
+
+#csFilter h2 {
+    background-color: cornflowerblue;
+    color: #fff;
+    padding: 5px;
+    font-size: 1em;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#csFilter h2 i{
+    float: right;
+}
+
+#csFilter #filtersBox {
+    margin: 10px 0;
+    height: auto;
+    max-height: 600px;
+    -webkit-transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -ms-transition: all 0.50s;
+    -o-transition: all 0.50s;
+    transition: all 0.50s;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+#csFilter #filtersBox.close{
+    max-height: 0px;
+    -webkit-transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -ms-transition: all 0.50s;
+    -o-transition: all 0.50s;
+    transition: all 0.20s;
+}
+
+#csFilter #filtersBox #filtersFooter {
+    padding: 10px 0;
+    width: 100%;
+}
+
+#csFilter #filtersBox #filtersFooter button {
+    float: left;
+}
+
+#csFilter #filtersBox #filtersFooter a {
+    float: right;
+}
+
+#csFilter #filtersBox ul {
+    margin: 0;
+    padding: 0;
+}
+
+#csFilter {
+
+}

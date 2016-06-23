@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:https="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/ptrade/css/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="/ptrade/javascript/libs/angular/1.5.3/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="directives.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="MainCtrl as mc">
+
+<!-- filter controller starts here -->
+<div ng-controller="FilterCtrl as fc">
+
+    <cs-filter
+        filterset="fc.filters"
+        filterheaders="fc.filterHeaders"
+        filteroptions="fc.filterOptions"
+        title="this is not a good title"
+        singleton="true"
+        dev="true"
+        filterbutton="true"
+        clearlink="true"
+        allopen="false"
+        boxwidth="300px"
+        getfiltersz="fc.getFilters(message)"
+        sendfilters="fc.submitFilters(message)">
+    </cs-filter>
+
+</div>
+
+<!-- grid controller starts here -->
+<div class="grid">
+
+    <p>filters:</p>
+    <ul>
+        <li ng-repeat="(key, val) in gc.chosenFilters">{{key}}: {{val | json}}
+    </ul>
+    dirty status:
+    <ul>
+        <li ng-repeat="(key, val) in gc.accordion">{{key}}: {{gc.accordion[key].dirty}}:{{gc.accordion[key].dirty ?
+            'dirty' : 'clean' }}
+        </li>
+    </ul>
+</div>
+<br class="clear"/>
+
+</body>
+
+</html>
